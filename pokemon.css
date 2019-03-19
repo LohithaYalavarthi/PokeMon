@@ -1,0 +1,123 @@
+ body{
+  margin: 0;
+ }
+
+*{
+  box-sizing: border-box;
+}
+ td {
+  border: 1px solid #ddd;
+  padding: 10px !important;
+  width: 100%;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin : 0 0 0 20px;
+
+}
+
+table,th.td{
+	width: 100%;
+
+}
+.search{
+  width: 60%;
+	padding:10px 20px 10px 10px;
+  outline: none;
+  font-size: 17px;
+  float: left;
+  background: #f1f1f1;
+  border: 1px solid grey;
+  
+
+}
+.form-container {
+    position: fixed;
+    width: 80%;
+    margin: 20px 0px 0px 0px;
+}
+
+li{
+	list-style-type: none;
+
+}
+
+.add-new{
+  float: right;
+  color: #D2691E;
+}
+.add-new:hover{
+  text-decoration: none;
+}
+
+ .btnapply {
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey ;
+  border-left: none;
+  cursor: pointer;
+
+}
+
+#Edit {
+    float: right;
+    margin-right: 50px;
+}
+
+.json-list {
+    position: relative;
+    top: 100px;
+    height: 80vh;
+    overflow-y: auto;
+}
+.icon-ap{
+  margin-left: 2px;
+}
+.btnapply:hover{
+  opacity: 0.8;
+}
+.json-list tr:last-child {
+    margin-bottom: 5em;
+}
+.close{
+  position:absolute;
+  cursor: pointer;
+  right: 10px;
+  top:5px;
+  font-size: 2em !important;
+}
+
+.button-det {
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+ .btnapply{
+      height: 45px;
+      width: 26%;
+ }
+ .fa{
+  display: none !important
+ }
+ #Add{
+      text-align: right;
+    margin-top: 2px;
+ }
+ .form-container{
+      margin-left: 15px;
+ }
+
+
+}
+.highlight {
+  background-color: blue;
+}
+mark{
+    background: orange;
+    color: black;
+}
+.click-spec{
+  background-color: whitesmoke;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PokeDox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="pokemon.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body onload="PokeDox_onload()">
+<div class="container">
+  <div id="listview">
+<div class= "form-container">
+   <input type="search" name="pokemonSearch" id="search"class="search" placeholder="Pokemon Name" onkeyup="SearchPokemon(event)">
+   <button type="submit" onclick="SearchPokemon(event)" class= "btnapply">Search <i class=" icon-ap fa fa-search"></i></button>
+   <a id= "Add" class="add-new" href="#">Add Pokemon</a>
+   </div>
+  <div id="jsonview" class= "json-list" onclick="PokemonView(event)">
+   </div>
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+         <div class ="button-det">
+          <button id="Edit" type="button" data-dismiss="modal" onclick="EditFunction()">Edit</button>
+          <h4 class="modal-title">Details</h4>
+          </div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+         <div>
+         <ul>
+         <li>
+         <label id ="name">Name</label>
+          <p id="pokemondet"></p>
+        </li>
+          <li>
+          <label id ="type">Type</label>
+          <p id="pokemontype"></p>
+          </li>
+          <li>
+          <label id ="attack">Attack</label>
+          <p id="pokemonAttack"></p>
+          </li>
+          <li>
+          <label id ="defense">Defense</label>
+          <p id="pokemondefense"></p>
+          </li>
+        </ul>
+      </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+   <div id="pokeform" class="form-container" style="display:none">
+    <form id="addpokemon">
+      <p id="BtnAdd"  style="float:right">
+        <button  type="button" class=" btn btn-info btn-lg" onclick="AddAttribute()">
+          <span class="glyphicon glyphicon-plus">AddAttribute</span>
+        </button>
+      </p>  
+     <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="name" class="form-control" id="Formname" required>
+      </div>
+     <div class="form-group">
+    <label for="type">Type:</label>
+    <input type="text" class="form-control" id="poketype" required>
+    </div>
+    <div class="form-group">
+    <label for="type">Attack Level:</label>
+    <input type="number" class="form-control" id="attack_level" required>
+    </div>
+    <div class="form-group">
+    <label for="type">Defense Level:</label>
+    <input type="number" class="form-control" id="defense_level" required
+    </div>
+    <div id="newelem"class="form-group"
+    ></div>
+  <button type="submit" id= "AddPoke" class="btn btn-default" onclick="AddPokemon(event)">Submit</button>
+  </form >
+   </div>
+   <div id="attackattr" style="display:none">
+    <form id="addattr">
+     <div class="form-group">
+    <label for="name">Name of the Attribute:</label>
+    <input type="text" class="form-control" id="Addname" required>
+      </div>
+     <div class="form-group">
+    <label for="type">Description :</label>
+    <input type="text" class="form-control" id="Adddesc" required>
+    </div>
+  <button type="submit" id= "addAtt" class="btn btn-default" onclick="AddPokemon(event)">Submit</button>
+  </form>
+   </div>
+  </div>
+  <script type="text/javascript" src="pokedex.json"></script>
+ <script type="text/javascript" src="PokeDox.js"></script>
+</body>
+</html>
