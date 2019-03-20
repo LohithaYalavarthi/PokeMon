@@ -136,7 +136,7 @@ function SearchPokemon(event) {
   var searchText = document.getElementById("search").value;
   FilterValue = FilterTextVlu(searchText);
     if(FilterValue.length == "1"){
-     document.getElementById("search").value =  FilterValue[0].name.english.length;
+     document.getElementById("search").value =  FilterValue[0].name.english;
    }
    $("#jsonview").empty();
    commonCreation(FilterValue);
