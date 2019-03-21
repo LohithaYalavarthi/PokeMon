@@ -53,11 +53,12 @@ document.getElementById("Add").addEventListener("click", function(){
 function AddPokemon(event){
   event.preventDefault();
   console.log(event.target.id);
-   JsNewAttr={};
+  
   if(event.target.id == "addAtt"){
     var AttributeName = document.getElementById("Addname").value;
     var AttrDesc =  document.getElementById("Adddesc").value;
     if(AttributeName!="" && AttrDesc != ""){
+    JsNewAttr={};    
     JsNewAttr[AttributeName] = AttrDesc;
     document.getElementById("addpokemon").style.display ="block";
     document.getElementById("BtnAdd").style.display="block";
@@ -87,6 +88,7 @@ function AddPokemon(event){
     type.push(PokeType);
     if( (typeof JsNewAttr != "undefined") && !(Object.keys(JsNewAttr).length === 0) && JsNewAttr.constructor === Object){
       jsonObj = JsNewAttr;
+      JsNewAttr={};
     }
     jsonObj.base = {};
     jsonObj["name"] = {};
