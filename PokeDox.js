@@ -29,7 +29,7 @@ function PokemonView(event){
  }
   TargetId = event.target.id;
   document.getElementById(TargetId).className = "click-spec";
-  CurrentRow = TargetId.slice(3,4);
+  CurrentRow = TargetId.slice(3);
   for (y in userdata) {
     Map[userdata[y].name.english] = userdata[y];
 }
