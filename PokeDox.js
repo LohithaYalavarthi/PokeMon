@@ -1,6 +1,6 @@
 var userdata = data;
 var JsNewAttr;
-var CurrentRow,TargetId ="";
+var CurrentRow,TargetId ="",CurrentText="";
 var Map = {};
 function PokeDox_onload(){
   var PuserData=  userdata;
@@ -24,21 +24,20 @@ function commonCreation(PuserData){
 document.getElementById("jsonview").appendChild(tbl);
 }
 function PokemonView(event){
-  if(TargetId !=""){
-  document.getElementById(TargetId).classList.remove("click-spec");
- }
+  $('td').removeClass("click-spec");
   TargetId = event.target.id;
   document.getElementById(TargetId).className = "click-spec";
   CurrentRow = TargetId.slice(3);
+  CurrentText =event.target.innerText;
   for (y in userdata) {
     Map[userdata[y].name.english] = userdata[y];
 }
-	if(TargetId){
+  if(TargetId){
       document.getElementById("pokemondet").innerHTML = event.target.innerText;
       document.getElementById("pokemonAttack").innerHTML =  Map[event.target.innerText].base.Attack;
       document.getElementById("pokemondefense").innerHTML = Map[event.target.innerText].base.Defense;
       document.getElementById("pokemontype").innerHTML = Map[event.target.innerText].type;
-	}
+  }
 }
 document.getElementById("Add").addEventListener("click", function(){
     document.getElementById("listview").style.display ="none";
@@ -47,10 +46,12 @@ document.getElementById("Add").addEventListener("click", function(){
     document.getElementById("BtnAdd").style.display="block";
     document.getElementById('addpokemon').reset();
     CurrentRow= "";
+    CurrentText="";
 });
 
 
 function AddPokemon(event){
+    var passvar = ""
   event.preventDefault();
   console.log(event.target.id);
   
@@ -96,19 +97,24 @@ function AddPokemon(event){
     jsonObj["base"].Defense = DefenseLevel;
     jsonObj["name"]["english"] =PokeName;
     jsonObj["type"] = type;
-    if(Map[jsonObj["name"]["english"]] && CurrentRow != ""){
-         userdata[CurrentRow]["name"]["english"] = PokeName;
-         userdata[CurrentRow]["base"].Attack =AttackLevel;
-         userdata[CurrentRow]["base"].Defense = DefenseLevel;
+    if(Map[jsonObj["name"]["english"]] && CurrentText != ""){
+         Map[CurrentText]["name"]["english"] = PokeName;
+         Map[CurrentText]["base"].Attack =AttackLevel;
+         Map[CurrentText]["base"].Defense = DefenseLevel;
+         passvar=Map
 }
      else{
           userdata.push(jsonObj);
+          passvar=userdata;
 
      }
     document.getElementById("addpokemon").style.display = "none"
     document.getElementById("pokeform").style.display = "none";
-    document.getElementById("listview").style.display = "block"
-    PokeDox_onload();
+    document.getElementById("listview").style.display = "block";
+    $("#jsonview").empty();
+    $("#search").val("")
+    commonCreation(passvar);
+    //PokeDox_onload();
   }
 }
 else{
@@ -164,5 +170,4 @@ function EditFunction(){
   document.getElementById("defense_level").value = PokeDef;
   $("#newelem").empty();
 }
-
 
